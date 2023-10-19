@@ -57,7 +57,10 @@ avgs <- readRDS(system.file("extdata", "avgs.rds", package="GenomicScores"))
 ```{r retrieve2, message=FALSE, cache=FALSE, eval=FALSE}
 availableGScores()
 ```
-```{r, echo=FALSE}
+```{r, message=FALSE, cache=FALSE, echo=FALSE}
+library(AnnotationHub)
+library(GenomicScores)
+setAnnotationHubOption("MAX_DOWNLOADS", 30)
 avgs
 ```
 
@@ -65,11 +68,13 @@ The selected resource can be downloaded with the function getGScores().
 After the resource is downloaded the first time, the cached copy will
 enable a quicker retrieval later.
 
-```{r retrieve3, message=FALSE, cache=FALSE, eval=FALSE}
+```{r retrieve3, message=FALSE, cache=FALSE}
 cadd <- getGScores("cadd.v1.6.hg19")
+cadd
+citation(cadd)
 ```
 
-Finally, the AlphaMissense pathogenicity score of a particular genomic position
+Finally, the CADD pathogenicity score of a particular genomic position
 is retrieved using the function 'gscores()'. Please consult the documentation
 of the `r Biocpkg("GenomicScores")` package for details on how to use it. For
 instance, @cheng2023accurate report likely pathogenic scores for variants in
@@ -79,7 +84,7 @@ score of the variant
 classified as pathogenic in the ClinVar database, we should call `gscores()`
 as follows.
 
-```{r retrieve4, message=FALSE, eval=FALSE}
+```{r retrieve4, message=FALSE}
 gscores(cadd, GRanges("chr7:44185175"), ref="C", alt="T")
 ```
 
