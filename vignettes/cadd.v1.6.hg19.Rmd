@@ -26,7 +26,7 @@ options(width=80)
 # Retrieval of cadd.v1.6.hg19 pathogenicity scores through AnnotationHub resources
 
 The `cadd.v1.6.hg19` package provides metadata for the
-`r Biocpkg("AnnotationHub")` resources associated with human AlphaMissense
+`r Biocpkg("AnnotationHub")` resources associated with human CADD
 pathogenicity scores [@kircher2014general]. The original data can be found at
 the University of Washington download
 [site](https://cadd.gs.washington.edu/download).
